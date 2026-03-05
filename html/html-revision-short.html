@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HTML Quick Revision</title>
+  <style>
+    :root {
+      --text: #111827;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --codebg: #0b1020;
+      --code: #e5e7eb;
+      --accent: #2563eb;
+    }
+
+    @page { margin: 18mm; }
+
+    html, body { padding: 0; margin: 0; }
+    body {
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Liberation Sans", sans-serif;
+      color: var(--text);
+      line-height: 1.55;
+      font-size: 12.2pt;
+      background: white;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    h1 { font-size: 24pt; margin: 0 0 10px; }
+    h2 { font-size: 16.5pt; margin: 22px 0 10px; border-bottom: 1px solid var(--border); padding-bottom: 6px; }
+    h3 { font-size: 13.5pt; margin: 18px 0 8px; }
+
+    p { margin: 10px 0; }
+    ul { margin: 8px 0 12px 20px; }
+    li { margin: 6px 0; }
+
+    hr { border: none; border-top: 1px solid var(--border); margin: 18px 0; }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.95em;
+      background: #f3f4f6;
+      padding: 1px 6px;
+      border-radius: 6px;
+    }
+
+    pre {
+      background: var(--codebg);
+      color: var(--code);
+      padding: 14px 16px;
+      border-radius: 10px;
+      overflow: auto;
+      margin: 12px 0;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    pre code { background: transparent; padding: 0; color: inherit; }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .footer {
+      margin-top: 28px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 10.5pt;
+    }
+
+    /* Print niceties */
+    pre, blockquote, ul, ol { break-inside: avoid; }
+    h2, h3 { break-after: avoid; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>HTML Quick Revision Notes (Interview-Focused)</h1>
+<p><strong>Goal:</strong> short + most important + most asked. (Examples only where needed.)</p>
+<hr>
+<h2>1) HTML Skeleton (Minimum)</h2>
+<p><strong>Most asked:</strong> What is the minimum HTML page?</p>
+<pre><code class="language-html">&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot; /&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot; /&gt;
+  &lt;title&gt;Page Title&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Hello&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>Learn more: https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Getting_started</p>
+<hr>
+<h2>2) DOCTYPE (Very Common Interview Question)</h2>
+<p><strong>Most asked:</strong> What is <code>&lt;!doctype html&gt;</code> and why do we use it?</p>
+<ul>
+<li>It tells the browser to render the page in <strong>standards mode</strong> (modern HTML).</li>
+<li>Without it, browsers may enter <strong>quirks mode</strong>, causing layout/CSS issues.</li>
+</ul>
+<p>Example:</p>
+<pre><code class="language-html">&lt;!doctype html&gt;
+&lt;html&gt;
+  &lt;head&gt;&lt;title&gt;Doc&lt;/title&gt;&lt;/head&gt;
+  &lt;body&gt;...&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>Learn more: https://developer.mozilla.org/en-US/docs/Glossary/Doctype</p>
+<hr>
+<h2>3) `&lt;head&gt;` vs `&lt;body&gt;`</h2>
+<p><strong>Most asked:</strong> What goes in head vs body?</p>
+<ul>
+<li><strong><code>&lt;head&gt;</code>:</strong> metadata (title, meta, links to CSS, scripts often with <code>defer</code>)</li>
+<li><strong><code>&lt;body&gt;</code>:</strong> visible content (text, images, forms)</li>
+</ul>
+<p>Learn more: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/head</p>
+<hr>
+<h2>4) Block vs Inline</h2>
+<p><strong>Most asked:</strong> Difference?</p>
+<ul>
+<li><strong>Block:</strong> new line, full width (<code>div</code>, <code>p</code>, <code>h1</code>)</li>
+<li><strong>Inline:</strong> same line (<code>span</code>, <code>a</code>, <code>strong</code>)</li>
+</ul>
+<pre><code class="language-html">&lt;p&gt;Block with &lt;strong&gt;inline&lt;/strong&gt; text.&lt;/p&gt;</code></pre>
+<p>Learn more: https://developer.mozilla.org/en-US/docs/Web/HTML/Inline_elements</p>
+<hr>
+<h2>5) Headings &amp; Page Structure</h2>
+<p><strong>Most asked:</strong> Best practice for <code>h1</code>…<code>h6</code>?</p>
+<ul>
+<li>Use headings in order to represent hierarchy.</li>
+<li>Usually <strong>one main <code>h1</code></strong> per page.</li>
+</ul>
+<pre><code class="language-html">&lt;h1&gt;Portfolio&lt;/h1&gt;
+&lt;h2&gt;Projects&lt;/h2&gt;
+&lt;h3&gt;Project A&lt;/h3&gt;</code></pre>
+<p>Learn more: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements</p>
+<hr>
+<h2>6) Links (`&lt;a&gt;`)</h2>
+<p><strong>Most asked:</strong> Open new tab safely?</p>
+<pre><code class="language-html">&lt;a href=&quot;https://example.com&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;Visit&lt;/a&gt;</code></pre>
+<p><strong>Most asked:</strong> Absolute vs relative URL?</p>
+<ul>
+<li>Absolute: <code>https://site.com/page</code></li>
+<li>Relative: <code>./page.html</code>, <code>/about</code></li>
+</ul>
+<p>Learn more: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a</p>
+<hr>
+<h2>7) Images (`&lt;img&gt;`) + `alt`</h2>
+<p><strong>Most asked:</strong> Why is <code>alt</code> important?</p>
+<ul>
+<li>Accessibility (screen readers)</li>
+<li>Shows text if image fails</li>
+</ul>
+<pre><code class="language-html">&lt;img src=&quot;cat.jpg&quot; alt=&quot;Orange cat sitting on a sofa&quot; width=&quot;300&quot; /&gt;</code></pre>
+<p>Learn more: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img</p>
+<hr>
+<h2>8) Lists (`ul/ol/li`)</h2>
+<p><strong>Most asked:</strong> <code>ul</code> vs <code>ol</code>?</p>
+<pre><code class="language-html">&lt;ul&gt;&lt;li&gt;Milk&lt;/li&gt;&lt;li&gt;Eggs&lt;/li&gt;&lt;/ul&gt;
+&lt;ol&gt;&lt;li&gt;Install&lt;/li&gt;&lt;li&gt;Run&lt;/li&gt;&lt;/ol&gt;</code></pre>
+<p>Learn more: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ul</p>
+<hr>
+<h2>9) Tables (Only for tabular data)</h2>
+<p><strong>Most asked:</strong> Simple table with header?</p>
+<pre><code class="language-html">&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Role&lt;/th&gt;&lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;&lt;td&gt;Vishal&lt;/td&gt;&lt;td&gt;QA&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+<p>Learn more: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table</p>
+<hr>
+<h2>10) Forms (Super Common)</h2>
+<p><strong>Most asked:</strong> Why use <code>&lt;label&gt;</code>?</p>
+<ul>
+<li>Better UX + accessibility (click label focuses input)</li>
+</ul>
+<pre><code class="language-html">&lt;form&gt;
+  &lt;label for=&quot;email&quot;&gt;Email&lt;/label&gt;
+  &lt;input id=&quot;email&quot; name=&quot;email&quot; type=&quot;email&quot; required /&gt;
+  &lt;button type=&quot;submit&quot;&gt;Submit&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+<p>Learn more: https://developer.mozilla.org/en-US/docs/Learn/Forms</p>
+<h3>GET vs POST (Interview)</h3>
+<ul>
+<li><strong>GET:</strong> sends data in URL (not for sensitive), good for search.</li>
+<li><strong>POST:</strong> sends data in request body, better for login/forms.</li>
+</ul>
+<hr>
+<h2>11) Common Input Types</h2>
+<p><strong>Most asked:</strong> Common types?</p>
+<ul>
+<li><code>text</code>, <code>email</code>, <code>password</code>, <code>number</code>, <code>date</code>, <code>file</code>, <code>checkbox</code>, <code>radio</code></li>
+</ul>
+<pre><code class="language-html">&lt;input type=&quot;password&quot; name=&quot;pwd&quot; /&gt;
+&lt;input type=&quot;checkbox&quot; name=&quot;terms&quot; /&gt; I agree</code></pre>
+<p>Learn more: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input</p>
+<hr>
+<h2>12) Semantic HTML (Very Important)</h2>
+<p><strong>Most asked:</strong> What is semantic HTML and why?</p>
+<ul>
+<li>Meaningful tags: <code>header</code>, <code>nav</code>, <code>main</code>, <code>section</code>, <code>article</code>, <code>footer</code></li>
+<li>Improves accessibility + SEO + code clarity</li>
+</ul>
+<pre><code class="language-html">&lt;main&gt;
+  &lt;article&gt;
+    &lt;h2&gt;Post title&lt;/h2&gt;
+    &lt;p&gt;Content...&lt;/p&gt;
+  &lt;/article&gt;
+&lt;/main&gt;</code></pre>
+<p>Learn more: https://developer.mozilla.org/en-US/docs/Glossary/Semantics</p>
+<hr>
+<h2>13) `div` vs `span`</h2>
+<p><strong>Most asked:</strong> When to use?</p>
+<ul>
+<li><code>div</code>: block container</li>
+<li><code>span</code>: inline container</li>
+</ul>
+<pre><code class="language-html">&lt;div class=&quot;card&quot;&gt;Block container&lt;/div&gt;
+&lt;p&gt;Price: &lt;span class=&quot;price&quot;&gt;₹199&lt;/span&gt;&lt;/p&gt;</code></pre>
+<hr>
+<h2>14) `id` vs `class`</h2>
+<p><strong>Most asked:</strong> Difference?</p>
+<ul>
+<li><code>id</code>: unique per page (good for anchors / unique element)</li>
+<li><code>class</code>: reusable (styling multiple elements)</li>
+</ul>
+<pre><code class="language-html">&lt;h1 id=&quot;top&quot;&gt;Title&lt;/h1&gt;
+&lt;p class=&quot;muted&quot;&gt;Small text&lt;/p&gt;</code></pre>
+<p>Learn more: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/id</p>
+<hr>
+<h2>15) HTML Entities (Special Characters)</h2>
+<p><strong>Most asked:</strong> How to display <code>&lt;</code> <code>&gt;</code> <code>&amp;</code>?</p>
+<ul>
+<li><code>&amp;lt;</code> <code>&amp;gt;</code> <code>&amp;amp;</code></li>
+</ul>
+<pre><code class="language-html">&lt;p&gt;Use &amp;lt;h1&amp;gt; and &amp;amp; keep it clean.&lt;/p&gt;</code></pre>
+<p>Learn more: https://developer.mozilla.org/en-US/docs/Glossary/Entity</p>
+<hr>
+<h2>16) Meta Tags (Must Know)</h2>
+<p><strong>Most asked:</strong> Important meta tags?</p>
+<pre><code class="language-html">&lt;meta charset=&quot;utf-8&quot; /&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot; /&gt;
+&lt;meta name=&quot;description&quot; content=&quot;Short page summary&quot; /&gt;</code></pre>
+<p>Learn more: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta</p>
+<hr>
+<h2>17) CSS Including (HTML side)</h2>
+<p><strong>Most asked:</strong> Inline vs internal vs external?</p>
+<ul>
+<li>Prefer <strong>external CSS</strong> (clean + scalable)</li>
+</ul>
+<pre><code class="language-html">&lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot; /&gt;</code></pre>
+<hr>
+<h2>18) JavaScript Including (`defer` vs `async`)</h2>
+<p><strong>Most asked:</strong> <code>defer</code> vs <code>async</code>?</p>
+<ul>
+<li><code>defer</code>: downloads now, runs after HTML parses (order kept) ✅ most common</li>
+<li><code>async</code>: runs ASAP when downloaded (order not guaranteed)</li>
+</ul>
+<pre><code class="language-html">&lt;script src=&quot;app.js&quot; defer&gt;&lt;/script&gt;</code></pre>
+<p>Learn more: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script</p>
+<hr>
+<h2>19) Accessibility (Fast Points)</h2>
+<p><strong>Most asked:</strong> How to improve accessibility quickly?</p>
+<ul>
+<li>Use correct headings order</li>
+<li>Always use <code>alt</code></li>
+<li>Use <code>label</code> for inputs</li>
+<li>Prefer semantic tags</li>
+<li>Use buttons for actions (not clickable divs)</li>
+</ul>
+<p>Learn more: https://developer.mozilla.org/en-US/docs/Learn/Accessibility/HTML</p>
+<hr>
+<h2>20) Common Tricky / Confusing Questions</h2>
+<p><strong>Q: Is HTML case-sensitive?</strong> No (but best practice is lowercase).</p>
+<p><strong>Q: Are tags self-closing in HTML?</strong></p>
+<ul>
+<li>Some elements are <strong>void elements</strong> (no closing tag): <code>img</code>, <code>br</code>, <code>hr</code>, <code>meta</code>, <code>link</code>, <code>input</code>.</li>
+<li>Others must have opening + closing tags.</li>
+</ul>
+<p>Learn more: https://developer.mozilla.org/en-US/docs/Glossary/Void_element</p>
+<p><strong>Q: <code>required</code> vs <code>placeholder</code>?</strong></p>
+<ul>
+<li><code>required</code>: validation rule</li>
+<li><code>placeholder</code>: hint text (not a value)</li>
+</ul>
+<p><strong>Q: How to check errors?</strong> Use W3C validator. Link: https://validator.w3.org/</p>
+<hr>
+<h1>Ultra-Short Interview/Viva Q&amp;A (Top)</h1>
+<p>1. <strong>What is HTML?</strong> Markup language to structure web pages. 2. <strong>What is DOCTYPE?</strong> Declares HTML document type; triggers standards mode. 3. <strong>HTML vs HTML5?</strong> HTML5 adds semantic tags, media, better forms features. 4. <strong>Semantic HTML?</strong> Meaningful tags; improves accessibility/SEO. 5. <strong><code>id</code> vs <code>class</code>?</strong> <code>id</code> unique; <code>class</code> reusable. 6. <strong>Block vs inline?</strong> Block new line; inline same line. 7. <strong>Why <code>alt</code>?</strong> Accessibility + fallback. 8. <strong>Why <code>label</code>?</strong> Accessibility + focus input. 9. <strong><code>defer</code> vs <code>async</code>?</strong> <code>defer</code> ordered after parse; <code>async</code> ASAP unordered. 10. <strong>GET vs POST?</strong> GET in URL; POST in body.</p>
+
+    <div class="footer">
+      Generated from markdown for sharing (PDF-friendly).
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,680 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HTML Interview Prep Guide</title>
+  <style>
+    :root {
+      --text: #111827;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --codebg: #0b1020;
+      --code: #e5e7eb;
+      --accent: #2563eb;
+    }
+
+    @page { margin: 18mm; }
+
+    html, body { padding: 0; margin: 0; }
+    body {
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Liberation Sans", sans-serif;
+      color: var(--text);
+      line-height: 1.55;
+      font-size: 12.2pt;
+      background: white;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    h1 { font-size: 24pt; margin: 0 0 10px; }
+    h2 { font-size: 16.5pt; margin: 22px 0 10px; border-bottom: 1px solid var(--border); padding-bottom: 6px; }
+    h3 { font-size: 13.5pt; margin: 18px 0 8px; }
+
+    p { margin: 10px 0; }
+    ul { margin: 8px 0 12px 20px; }
+    li { margin: 6px 0; }
+
+    hr { border: none; border-top: 1px solid var(--border); margin: 18px 0; }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.95em;
+      background: #f3f4f6;
+      padding: 1px 6px;
+      border-radius: 6px;
+    }
+
+    pre {
+      background: var(--codebg);
+      color: var(--code);
+      padding: 14px 16px;
+      border-radius: 10px;
+      overflow: auto;
+      margin: 12px 0;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    pre code { background: transparent; padding: 0; color: inherit; }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .footer {
+      margin-top: 28px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 10.5pt;
+    }
+
+    /* Print niceties */
+    pre, blockquote, ul, ol { break-inside: avoid; }
+    h2, h3 { break-after: avoid; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>HTML Interview Preparation Guide (Fresher/Junior Handbook)</h1>
+<p>Use this as a <strong>revise-fast handbook</strong>. Each topic is written in an interview-friendly Q&amp;A format with: <strong>short answer + explanation + code + best practices</strong>.</p>
+<hr>
+<h2>HTML Basics</h2>
+<hr>
+<p><strong>Question:</strong> What is HTML and what is it used for?</p>
+<p><strong>Short Interview Answer:</strong> HTML (HyperText Markup Language) is the standard language used to structure content on the web (headings, paragraphs, links, forms, media).</p>
+<p><strong>Explanation:</strong> HTML describes the <strong>structure</strong> of a web page. Styling is handled by CSS and behavior by JavaScript. Browsers parse HTML into a DOM (Document Object Model).</p>
+<p><strong>Example Code:</strong></p>
+<pre><code class="language-html">&lt;h1&gt;Profile&lt;/h1&gt;
+&lt;p&gt;This is a short bio.&lt;/p&gt;
+&lt;a href=&quot;/projects&quot;&gt;View projects&lt;/a&gt;</code></pre>
+<p><strong>Best Practices:</strong></p>
+<ul>
+<li>Use HTML for <strong>structure and meaning</strong>, not for styling.</li>
+<li>Prefer <strong>semantic tags</strong> for readability and accessibility.</li>
+</ul>
+<hr>
+<hr>
+<p><strong>Question:</strong> What is the difference between a Tag and an Element?</p>
+<p><strong>Short Interview Answer:</strong> A tag is the markup syntax (like <code>&lt;p&gt;</code>), while an element includes the opening tag, content, and closing tag (<code>&lt;p&gt;Hello&lt;/p&gt;</code>).</p>
+<p><strong>Explanation:</strong> Tags are the angle-bracket parts. An element is the full node in the DOM (including attributes and content).</p>
+<p><strong>Example Code:</strong></p>
+<pre><code class="language-html">&lt;p class=&quot;note&quot;&gt;Hello World&lt;/p&gt;</code></pre>
+<p><strong>Best Practices:</strong></p>
+<ul>
+<li>Speak precisely in interviews: “This <strong>element</strong> has a class attribute.”</li>
+</ul>
+<hr>
+<hr>
+<p><strong>Question:</strong> What is the difference between Block and Inline elements?</p>
+<p><strong>Short Interview Answer:</strong> Block elements start on a new line and take full width (e.g., <code>div</code>, <code>p</code>). Inline elements flow within text and take only needed width (e.g., <code>span</code>, <code>a</code>).</p>
+<p><strong>Explanation:</strong> Block elements create layout “blocks.” Inline elements are for small parts inside text. CSS can change display behavior.</p>
+<p><strong>Example Code:</strong></p>
+<pre><code class="language-html">&lt;p&gt;This is &lt;span&gt;inline text&lt;/span&gt; inside a paragraph.&lt;/p&gt;
+&lt;div&gt;This is a block container&lt;/div&gt;</code></pre>
+<p><strong>Best Practices:</strong></p>
+<ul>
+<li>Use block elements for layout structure and inline for text-level semantics.</li>
+<li>Don’t wrap block elements inside inline elements (invalid in many cases).</li>
+</ul>
+<hr>
+<hr>
+<p><strong>Question:</strong> What are void (self-closing) elements?</p>
+<p><strong>Short Interview Answer:</strong> Void elements don’t have closing tags or content (e.g., <code>img</code>, <code>input</code>, <code>br</code>, <code>meta</code>, <code>link</code>).</p>
+<p><strong>Explanation:</strong> They represent standalone nodes. In HTML5 you write <code>&lt;img ...&gt;</code> (not required to use <code>/&gt;</code>).</p>
+<p><strong>Example Code:</strong></p>
+<pre><code class="language-html">&lt;img src=&quot;avatar.png&quot; alt=&quot;User avatar&quot;&gt;
+&lt;input type=&quot;email&quot; name=&quot;email&quot;&gt;
+&lt;br&gt;</code></pre>
+<p><strong>Best Practices:</strong></p>
+<ul>
+<li>Always provide <code>alt</code> for images (important for accessibility/SEO).</li>
+<li>Avoid using <code>&lt;br&gt;</code> for layout; use CSS.</li>
+</ul>
+<hr>
+<h2>HTML Document Structure</h2>
+<hr>
+<p><strong>Question:</strong> What is <code>&lt;!DOCTYPE html&gt;</code> and why is it important?</p>
+<p><strong>Short Interview Answer:</strong> It tells the browser to use <strong>standards mode</strong> for HTML5 and avoids quirks mode rendering.</p>
+<p><strong>Explanation:</strong> Without it, browsers may behave inconsistently (quirks mode), causing CSS/layout issues.</p>
+<p><strong>Example Code:</strong></p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+  &lt;head&gt;&lt;/head&gt;
+  &lt;body&gt;&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p><strong>Best Practices:</strong></p>
+<ul>
+<li>Always include <code>&lt;!DOCTYPE html&gt;</code> at the top.</li>
+</ul>
+<hr>
+<hr>
+<p><strong>Question:</strong> What is the purpose of <code>&lt;head&gt;</code> vs <code>&lt;body&gt;</code>?</p>
+<p><strong>Short Interview Answer:</strong> <code>&lt;head&gt;</code> contains metadata (title, meta tags, CSS links, scripts), while <code>&lt;body&gt;</code> contains visible page content.</p>
+<p><strong>Explanation:</strong> Search engines and browsers use head data for preview/SEO/rendering. Body is the UI content.</p>
+<p><strong>Example Code:</strong></p>
+<pre><code class="language-html">&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;title&gt;Portfolio&lt;/title&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;styles.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Vishal Chandora&lt;/h1&gt;
+&lt;/body&gt;</code></pre>
+<p><strong>Best Practices:</strong></p>
+<ul>
+<li>Keep SEO/meta tags in <code>&lt;head&gt;</code>.</li>
+<li>Load non-critical scripts with <code>defer</code>.</li>
+</ul>
+<hr>
+<hr>
+<p><strong>Question:</strong> Why is <code>&lt;meta charset=&quot;UTF-8&quot;&gt;</code> used?</p>
+<p><strong>Short Interview Answer:</strong> It sets the character encoding to UTF‑8 so text and symbols render correctly.</p>
+<p><strong>Explanation:</strong> UTF‑8 supports most characters worldwide. Placing it early helps the browser parse correctly.</p>
+<p><strong>Example Code:</strong></p>
+<pre><code class="language-html">&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;/head&gt;</code></pre>
+<p><strong>Best Practices:</strong></p>
+<ul>
+<li>Put charset meta tag as early as possible in <code>&lt;head&gt;</code>.</li>
+</ul>
+<hr>
+<hr>
+<p><strong>Question:</strong> What does <code>&lt;meta name=&quot;viewport&quot;&gt;</code> do?</p>
+<p><strong>Short Interview Answer:</strong> It controls layout on mobile devices; <code>width=device-width, initial-scale=1</code> makes pages responsive.</p>
+<p><strong>Explanation:</strong> Without it, mobile browsers may render pages at desktop width and scale down.</p>
+<p><strong>Example Code:</strong></p>
+<pre><code class="language-html">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;</code></pre>
+<p><strong>Best Practices:</strong></p>
+<ul>
+<li>Always include viewport meta tag for responsive sites.</li>
+</ul>
+<hr>
+<h2>HTML Elements &amp; Tags</h2>
+<hr>
+<p><strong>Question:</strong> Difference between <code>&lt;div&gt;</code> and <code>&lt;span&gt;</code>?</p>
+<p><strong>Short Interview Answer:</strong> <code>div</code> is a block-level generic container; <code>span</code> is an inline generic container.</p>
+<p><strong>Explanation:</strong> Both have no semantic meaning by default. Use semantic tags when possible.</p>
+<p><strong>Example Code:</strong></p>
+<pre><code class="language-html">&lt;div class=&quot;card&quot;&gt;
+  &lt;span class=&quot;badge&quot;&gt;New&lt;/span&gt;
+  &lt;p&gt;Item description&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+<p><strong>Best Practices:</strong></p>
+<ul>
+<li>Prefer semantic tags like <code>&lt;section&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;nav&gt;</code> over <code>&lt;div&gt;</code> when appropriate.</li>
+</ul>
+<hr>
+<hr>
+<p><strong>Question:</strong> What’s the difference between <code>&lt;strong&gt;</code> and <code>&lt;b&gt;</code> (and <code>&lt;em&gt;</code> vs <code>&lt;i&gt;</code>)?</p>
+<p><strong>Short Interview Answer:</strong> <code>strong</code> and <code>em</code> convey semantic importance/emphasis; <code>b</code> and <code>i</code> are purely presentational.</p>
+<p><strong>Explanation:</strong> Screen readers may announce emphasis/importance for semantic tags.</p>
+<p><strong>Example Code:</strong></p>
+<pre><code class="language-html">&lt;p&gt;&lt;strong&gt;Warning:&lt;/strong&gt; This action is irreversible.&lt;/p&gt;
+&lt;p&gt;Please &lt;em&gt;read&lt;/em&gt; the instructions carefully.&lt;/p&gt;</code></pre>
+<p><strong>Best Practices:</strong></p>
+<ul>
+<li>Use <code>strong/em</code> when meaning matters; use CSS for styling.</li>
+</ul>
+<hr>
+<hr>
+<p><strong>Question:</strong> When would you use <code>&lt;article&gt;</code> vs <code>&lt;section&gt;</code>?</p>
+<p><strong>Short Interview Answer:</strong> <code>article</code> is self-contained content that can stand alone (blog post, news item). <code>section</code> groups related content within a page.</p>
+<p><strong>Explanation:</strong> Articles make sense if syndicated or reused independently. Sections organize a document.</p>
+<p><strong>Example Code:</strong></p>
+<pre><code class="language-html">&lt;article&gt;
+  &lt;h2&gt;How I Built My Portfolio&lt;/h2&gt;
+  &lt;p&gt;...&lt;/p&gt;
+&lt;/article&gt;
+
+&lt;section&gt;
+  &lt;h2&gt;Skills&lt;/h2&gt;
+  &lt;p&gt;...&lt;/p&gt;
+&lt;/section&gt;</code></pre>
+<p><strong>Best Practices:</strong></p>
+<ul>
+<li>Use headings (<code>h2/h3...</code>) inside sections/articles for structure.</li>
+</ul>
+<hr>
+<h2>Attributes</h2>
+<hr>
+<p><strong>Question:</strong> Difference between <code>id</code> and <code>class</code>?</p>
+<p><strong>Short Interview Answer:</strong> <code>id</code> must be unique on a page; <code>class</code> can be reused across many elements.</p>
+<p><strong>Explanation:</strong> IDs are often used for anchors and JS targeting; classes are used for styling and grouping.</p>
+<p><strong>Example Code:</strong></p>
+<pre><code class="language-html">&lt;div id=&quot;profile&quot;&gt;
+  &lt;p class=&quot;text-muted&quot;&gt;Frontend Developer&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+<p><strong>Best Practices:</strong></p>
+<ul>
+<li>Don’t reuse the same <code>id</code>.</li>
+<li>Prefer classes for CSS; avoid styling by id (harder to maintain).</li>
+</ul>
+<hr>
+<hr>
+<p><strong>Question:</strong> What are <code>data-*</code> attributes?</p>
+<p><strong>Short Interview Answer:</strong> Custom attributes to store extra information on elements, accessible via JS (<code>dataset</code>).</p>
+<p><strong>Explanation:</strong> They are valid HTML and useful for attaching metadata without abusing classes.</p>
+<p><strong>Example Code:</strong></p>
+<pre><code class="language-html">&lt;button data-user-id=&quot;42&quot; id=&quot;inviteBtn&quot;&gt;Invite&lt;/button&gt;
+
+&lt;script&gt;
+  const btn = document.getElementById(&quot;inviteBtn&quot;);
+  console.log(btn.dataset.userId); // &quot;42&quot;
+&lt;/script&gt;</code></pre>
+<p><strong>Best Practices:</strong></p>
+<ul>
+<li>Store simple UI metadata; don’t store secrets.</li>
+<li>Prefer structured state in JS for complex apps.</li>
+</ul>
+<hr>
+<hr>
+<p><strong>Question:</strong> What does <code>defer</code> do on scripts?</p>
+<p><strong>Short Interview Answer:</strong> <code>defer</code> loads the script in parallel and executes it after HTML parsing, preserving order.</p>
+<p><strong>Explanation:</strong> It prevents blocking page rendering and ensures DOM is ready.</p>
+<p><strong>Example Code:</strong></p>
+<pre><code class="language-html">&lt;script src=&quot;app.js&quot; defer&gt;&lt;/script&gt;</code></pre>
+<p><strong>Best Practices:</strong></p>
+<ul>
+<li>Use <code>defer</code> for most scripts in <code>&lt;head&gt;</code>.</li>
+<li>Use <code>type=&quot;module&quot;</code> (modules are deferred by default).</li>
+</ul>
+<hr>
+<h2>Semantic HTML</h2>
+<hr>
+<p><strong>Question:</strong> What is Semantic HTML and why is it important?</p>
+<p><strong>Short Interview Answer:</strong> Semantic HTML uses meaningful tags (<code>header</code>, <code>nav</code>, <code>main</code>, <code>article</code>) to describe content, improving accessibility, SEO, and maintainability.</p>
+<p><strong>Explanation:</strong> Assistive tech and search engines understand page structure better. Teams can read code faster.</p>
+<p><strong>Example Code:</strong></p>
+<pre><code class="language-html">&lt;header&gt;
+  &lt;nav aria-label=&quot;Primary&quot;&gt;
+    &lt;a href=&quot;/&quot;&gt;Home&lt;/a&gt;
+  &lt;/nav&gt;
+&lt;/header&gt;
+
+&lt;main&gt;
+  &lt;article&gt;
+    &lt;h1&gt;Project&lt;/h1&gt;
+    &lt;p&gt;Details...&lt;/p&gt;
+  &lt;/article&gt;
+&lt;/main&gt;
+
+&lt;footer&gt;© 2026&lt;/footer&gt;</code></pre>
+<p><strong>Best Practices:</strong></p>
+<ul>
+<li>Use one <code>&lt;main&gt;</code> per page.</li>
+<li>Use headings in logical order.</li>
+</ul>
+<hr>
+<hr>
+<p><strong>Question:</strong> What is the difference between <code>&lt;header&gt;</code> and <code>&lt;head&gt;</code>?</p>
+<p><strong>Short Interview Answer:</strong> <code>&lt;head&gt;</code> is metadata (not visible). <code>&lt;header&gt;</code> is a visible section header for a page or part of a page.</p>
+<p><strong>Explanation:</strong> <code>header</code> can appear multiple times (per section/article). <code>head</code> appears once per document.</p>
+<p><strong>Example Code:</strong></p>
+<pre><code class="language-html">&lt;head&gt;&lt;title&gt;Site&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+  &lt;header&gt;&lt;h1&gt;Site Name&lt;/h1&gt;&lt;/header&gt;
+&lt;/body&gt;</code></pre>
+<p><strong>Best Practices:</strong></p>
+<ul>
+<li>Don’t confuse these in interviews—very common trap.</li>
+</ul>
+<hr>
+<h2>Forms</h2>
+<hr>
+<p><strong>Question:</strong> Why is the <code>label</code> tag important in forms?</p>
+<p><strong>Short Interview Answer:</strong> <code>label</code> improves accessibility and usability by connecting text to inputs; clicking the label focuses the input.</p>
+<p><strong>Explanation:</strong> Screen readers announce labels. Using <code>for</code> + <code>id</code> connects them.</p>
+<p><strong>Example Code:</strong></p>
+<pre><code class="language-html">&lt;label for=&quot;email&quot;&gt;Email&lt;/label&gt;
+&lt;input id=&quot;email&quot; name=&quot;email&quot; type=&quot;email&quot; required&gt;</code></pre>
+<p><strong>Best Practices:</strong></p>
+<ul>
+<li>Every input should have a label (or <code>aria-label</code> as fallback).</li>
+<li>Use <code>required</code>, <code>type</code>, and <code>autocomplete</code> properly.</li>
+</ul>
+<hr>
+<hr>
+<p><strong>Question:</strong> Difference between GET and POST in forms?</p>
+<p><strong>Short Interview Answer:</strong> GET sends form data in the URL query string; POST sends it in the request body.</p>
+<p><strong>Explanation:</strong> GET is good for search/filter forms and is cacheable/bookmarkable. POST is better for sensitive or large data.</p>
+<p><strong>Example Code:</strong></p>
+<pre><code class="language-html">&lt;form method=&quot;GET&quot; action=&quot;/search&quot;&gt;
+  &lt;input name=&quot;q&quot;&gt;
+&lt;/form&gt;
+
+&lt;form method=&quot;POST&quot; action=&quot;/register&quot;&gt;
+  &lt;input name=&quot;email&quot; type=&quot;email&quot;&gt;
+&lt;/form&gt;</code></pre>
+<p><strong>Best Practices:</strong></p>
+<ul>
+<li>Don’t use GET for passwords or sensitive info.</li>
+<li>Always validate on server even if HTML validation exists.</li>
+</ul>
+<hr>
+<hr>
+<p><strong>Question:</strong> What are common HTML form validations?</p>
+<p><strong>Short Interview Answer:</strong> <code>required</code>, input <code>type</code> (email/url), <code>min/max</code>, <code>minlength/maxlength</code>, <code>pattern</code>.</p>
+<p><strong>Explanation:</strong> Browser runs built-in validation before submit, but it’s not a security feature.</p>
+<p><strong>Example Code:</strong></p>
+<pre><code class="language-html">&lt;input type=&quot;password&quot; required minlength=&quot;8&quot;&gt;
+&lt;input type=&quot;text&quot; pattern=&quot;[A-Za-z ]+&quot;&gt;</code></pre>
+<p><strong>Best Practices:</strong></p>
+<ul>
+<li>Provide helpful error messages (with ARIA when needed).</li>
+<li>Validate again on backend.</li>
+</ul>
+<hr>
+<hr>
+<p><strong>Question:</strong> What is the difference between <code>button</code>, <code>submit</code>, and <code>reset</code> types?</p>
+<p><strong>Short Interview Answer:</strong> <code>type=&quot;submit&quot;</code> submits the form, <code>type=&quot;reset&quot;</code> resets fields, <code>type=&quot;button&quot;</code> does nothing unless JS handles it.</p>
+<p><strong>Explanation:</strong> Default type for <code>&lt;button&gt;</code> inside forms is <strong>submit</strong> (common trap).</p>
+<p><strong>Example Code:</strong></p>
+<pre><code class="language-html">&lt;button type=&quot;submit&quot;&gt;Apply&lt;/button&gt;
+&lt;button type=&quot;button&quot;&gt;Preview&lt;/button&gt;
+&lt;button type=&quot;reset&quot;&gt;Clear&lt;/button&gt;</code></pre>
+<p><strong>Best Practices:</strong></p>
+<ul>
+<li>Always set explicit <code>type</code> on <code>&lt;button&gt;</code> in forms.</li>
+</ul>
+<hr>
+<h2>Media (Images, Audio, Video)</h2>
+<hr>
+<p><strong>Question:</strong> Why is the <code>alt</code> attribute important for images?</p>
+<p><strong>Short Interview Answer:</strong> <code>alt</code> provides text alternative for screen readers and displays when image fails; also helps SEO.</p>
+<p><strong>Explanation:</strong> For decorative images, use empty alt (<code>alt=&quot;&quot;</code>) so screen readers skip it.</p>
+<p><strong>Example Code:</strong></p>
+<pre><code class="language-html">&lt;img src=&quot;logo.png&quot; alt=&quot;Company logo&quot;&gt;
+&lt;img src=&quot;divider.png&quot; alt=&quot;&quot;&gt;</code></pre>
+<p><strong>Best Practices:</strong></p>
+<ul>
+<li>Meaningful images: descriptive alt.</li>
+<li>Decorative images: <code>alt=&quot;&quot;</code> and preferably CSS background.</li>
+</ul>
+<hr>
+<hr>
+<p><strong>Question:</strong> How do you make images responsive?</p>
+<p><strong>Short Interview Answer:</strong> Use CSS like <code>max-width: 100%; height: auto;</code> and/or <code>srcset</code> for responsive images.</p>
+<p><strong>Explanation:</strong> <code>srcset</code> lets browser choose best resolution based on device.</p>
+<p><strong>Example Code:</strong></p>
+<pre><code class="language-html">&lt;img
+  src=&quot;photo-800.jpg&quot;
+  srcset=&quot;photo-400.jpg 400w, photo-800.jpg 800w, photo-1600.jpg 1600w&quot;
+  sizes=&quot;(max-width: 600px) 400px, 800px&quot;
+  alt=&quot;Team working together&quot;&gt;</code></pre>
+<p><strong>Best Practices:</strong></p>
+<ul>
+<li>Use modern formats when possible (WebP/AVIF).</li>
+<li>Avoid huge images without <code>srcset</code>.</li>
+</ul>
+<hr>
+<hr>
+<p><strong>Question:</strong> How do <code>&lt;audio&gt;</code> and <code>&lt;video&gt;</code> work with <code>&lt;source&gt;</code>?</p>
+<p><strong>Short Interview Answer:</strong> You can provide multiple formats via <code>&lt;source&gt;</code> and browser picks the first supported.</p>
+<p><strong>Explanation:</strong> Useful for compatibility across browsers.</p>
+<p><strong>Example Code:</strong></p>
+<pre><code class="language-html">&lt;video controls width=&quot;600&quot;&gt;
+  &lt;source src=&quot;movie.webm&quot; type=&quot;video/webm&quot;&gt;
+  &lt;source src=&quot;movie.mp4&quot; type=&quot;video/mp4&quot;&gt;
+  Sorry, your browser doesn’t support video.
+&lt;/video&gt;</code></pre>
+<p><strong>Best Practices:</strong></p>
+<ul>
+<li>Always provide controls (or accessible custom controls).</li>
+<li>Add captions/subtitles for accessibility when required.</li>
+</ul>
+<hr>
+<h2>Lists</h2>
+<hr>
+<p><strong>Question:</strong> Difference between <code>&lt;ul&gt;</code>, <code>&lt;ol&gt;</code>, and <code>&lt;dl&gt;</code>?</p>
+<p><strong>Short Interview Answer:</strong> <code>ul</code> is unordered list, <code>ol</code> is ordered list, <code>dl</code> is description list (terms + descriptions).</p>
+<p><strong>Explanation:</strong> Use <code>ol</code> when order matters (steps). Use <code>dl</code> for key-value style info.</p>
+<p><strong>Example Code:</strong></p>
+<pre><code class="language-html">&lt;ol&gt;
+  &lt;li&gt;Install Node&lt;/li&gt;
+  &lt;li&gt;Run the project&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;dl&gt;
+  &lt;dt&gt;Role&lt;/dt&gt;
+  &lt;dd&gt;Frontend Developer&lt;/dd&gt;
+&lt;/dl&gt;</code></pre>
+<p><strong>Best Practices:</strong></p>
+<ul>
+<li>Don’t use lists just for indentation—use correct semantics.</li>
+</ul>
+<hr>
+<h2>Tables</h2>
+<hr>
+<p><strong>Question:</strong> When should you use tables in HTML?</p>
+<p><strong>Short Interview Answer:</strong> Use tables only for <strong>tabular data</strong>, not layout.</p>
+<p><strong>Explanation:</strong> Tables create meaningful row/column relationships; using them for layout harms accessibility and responsiveness.</p>
+<p><strong>Example Code:</strong></p>
+<pre><code class="language-html">&lt;table&gt;
+  &lt;caption&gt;Semester Results&lt;/caption&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;&lt;th&gt;Subject&lt;/th&gt;&lt;th&gt;Grade&lt;/th&gt;&lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;&lt;td&gt;DBMS&lt;/td&gt;&lt;td&gt;A&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+<p><strong>Best Practices:</strong></p>
+<ul>
+<li>Use <code>&lt;caption&gt;</code>, <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code>, <code>&lt;th&gt;</code> for clarity.</li>
+<li>Use <code>scope=&quot;col&quot;</code> / <code>scope=&quot;row&quot;</code> for accessibility when helpful.</li>
+</ul>
+<hr>
+<hr>
+<p><strong>Question:</strong> Difference between <code>&lt;th&gt;</code> and <code>&lt;td&gt;</code>?</p>
+<p><strong>Short Interview Answer:</strong> <code>th</code> is a header cell (describes a row/column). <code>td</code> is a data cell.</p>
+<p><strong>Explanation:</strong> Screen readers use header cells to announce context for data cells.</p>
+<p><strong>Example Code:</strong></p>
+<pre><code class="language-html">&lt;tr&gt;
+  &lt;th scope=&quot;row&quot;&gt;Total&lt;/th&gt;
+  &lt;td&gt;₹4,20,000&lt;/td&gt;
+&lt;/tr&gt;</code></pre>
+<p><strong>Best Practices:</strong></p>
+<ul>
+<li>Use <code>scope</code> for better accessibility.</li>
+</ul>
+<hr>
+<h2>SEO &amp; Meta Tags</h2>
+<hr>
+<p><strong>Question:</strong> Which HTML tags are important for SEO?</p>
+<p><strong>Short Interview Answer:</strong> <code>&lt;title&gt;</code>, meta description, heading structure (<code>h1-h6</code>), semantic elements, <code>alt</code> text, canonical link.</p>
+<p><strong>Explanation:</strong> Search engines use title/description for snippets; headings and semantic content help relevance.</p>
+<p><strong>Example Code:</strong></p>
+<pre><code class="language-html">&lt;head&gt;
+  &lt;title&gt;Vishal Chandora | Frontend Developer&lt;/title&gt;
+  &lt;meta name=&quot;description&quot; content=&quot;Frontend developer portfolio with React projects, skills, and contact details.&quot;&gt;
+  &lt;link rel=&quot;canonical&quot; href=&quot;https://example.com/&quot;&gt;
+&lt;/head&gt;</code></pre>
+<p><strong>Best Practices:</strong></p>
+<ul>
+<li>One clear <code>&lt;h1&gt;</code> per page (usually).</li>
+<li>Unique title + description per page.</li>
+</ul>
+<hr>
+<hr>
+<p><strong>Question:</strong> What is Open Graph and why use it?</p>
+<p><strong>Short Interview Answer:</strong> Open Graph meta tags control how links appear when shared on social platforms (title, image, description).</p>
+<p><strong>Explanation:</strong> Improves link previews and click-through rate.</p>
+<p><strong>Example Code:</strong></p>
+<pre><code class="language-html">&lt;meta property=&quot;og:title&quot; content=&quot;My Portfolio&quot;&gt;
+&lt;meta property=&quot;og:description&quot; content=&quot;Projects, skills, and contact.&quot;&gt;
+&lt;meta property=&quot;og:image&quot; content=&quot;https://example.com/preview.png&quot;&gt;
+&lt;meta property=&quot;og:url&quot; content=&quot;https://example.com/&quot;&gt;</code></pre>
+<p><strong>Best Practices:</strong></p>
+<ul>
+<li>Use absolute URLs for images.</li>
+<li>Provide Twitter card tags too when needed.</li>
+</ul>
+<hr>
+<h2>Accessibility</h2>
+<hr>
+<p><strong>Question:</strong> What is ARIA and when should you use it?</p>
+<p><strong>Short Interview Answer:</strong> ARIA adds accessibility info when native HTML isn’t enough, but should not replace semantic HTML.</p>
+<p><strong>Explanation:</strong> Use semantic elements first. ARIA is for custom widgets or when structure needs clarification.</p>
+<p><strong>Example Code:</strong></p>
+<pre><code class="language-html">&lt;nav aria-label=&quot;Primary navigation&quot;&gt;
+  &lt;a href=&quot;/jobs&quot;&gt;Jobs&lt;/a&gt;
+&lt;/nav&gt;</code></pre>
+<p><strong>Best Practices:</strong></p>
+<ul>
+<li>“No ARIA is better than bad ARIA.”</li>
+<li>Prefer native controls (<code>button</code>, <code>input</code>) over div-based controls.</li>
+</ul>
+<hr>
+<hr>
+<p><strong>Question:</strong> What’s the difference between <code>aria-label</code> and <code>aria-labelledby</code>?</p>
+<p><strong>Short Interview Answer:</strong> <code>aria-label</code> provides direct text label; <code>aria-labelledby</code> references another element’s text as the label.</p>
+<p><strong>Explanation:</strong> Use <code>aria-labelledby</code> when visible text exists; it avoids duplication and stays consistent.</p>
+<p><strong>Example Code:</strong></p>
+<pre><code class="language-html">&lt;h2 id=&quot;settingsTitle&quot;&gt;Settings&lt;/h2&gt;
+&lt;section aria-labelledby=&quot;settingsTitle&quot;&gt;
+  ...
+&lt;/section&gt;</code></pre>
+<p><strong>Best Practices:</strong></p>
+<ul>
+<li>Don’t use both unless you know precedence and need it.</li>
+</ul>
+<hr>
+<hr>
+<p><strong>Question:</strong> Why is keyboard navigation important and how do you support it?</p>
+<p><strong>Short Interview Answer:</strong> Many users rely on keyboard; use proper focusable elements and logical tab order.</p>
+<p><strong>Explanation:</strong> Buttons/links are keyboard accessible by default. Divs are not.</p>
+<p><strong>Example Code:</strong></p>
+<pre><code class="language-html">&lt;button type=&quot;button&quot;&gt;Open modal&lt;/button&gt;
+&lt;a href=&quot;/apply&quot;&gt;Apply&lt;/a&gt;</code></pre>
+<p><strong>Best Practices:</strong></p>
+<ul>
+<li>Don’t remove focus outlines without replacement.</li>
+<li>Avoid <code>tabindex</code> hacks; use native elements.</li>
+</ul>
+<hr>
+<h2>HTML5 Features</h2>
+<hr>
+<p><strong>Question:</strong> What are some key HTML5 additions?</p>
+<p><strong>Short Interview Answer:</strong> Semantic tags (<code>main</code>, <code>section</code>, <code>article</code>), form input types, multimedia (<code>audio</code>, <code>video</code>), <code>canvas</code>, <code>data-*</code>.</p>
+<p><strong>Explanation:</strong> HTML5 improved semantics, native media, and forms—reducing reliance on plugins.</p>
+<p><strong>Example Code:</strong></p>
+<pre><code class="language-html">&lt;input type=&quot;email&quot; autocomplete=&quot;email&quot; required&gt;
+&lt;main&gt;...&lt;/main&gt;
+&lt;video controls src=&quot;demo.mp4&quot;&gt;&lt;/video&gt;</code></pre>
+<p><strong>Best Practices:</strong></p>
+<ul>
+<li>Use new input types for better mobile keyboards and validation.</li>
+</ul>
+<hr>
+<h2>Common Interview Traps (Very Important)</h2>
+<hr>
+<p><strong>Question:</strong> What is the default <code>type</code> of <code>&lt;button&gt;</code> inside a form?</p>
+<p><strong>Short Interview Answer:</strong> Default is <code>submit</code>.</p>
+<p><strong>Explanation:</strong> Many bugs happen when a button unexpectedly submits a form.</p>
+<p><strong>Example Code:</strong></p>
+<pre><code class="language-html">&lt;form&gt;
+  &lt;button&gt;Click&lt;/button&gt; &lt;!-- submits! --&gt;
+  &lt;button type=&quot;button&quot;&gt;Safe&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+<p><strong>Best Practices:</strong></p>
+<ul>
+<li>Always set <code>type=&quot;button&quot;</code> for non-submit buttons.</li>
+</ul>
+<hr>
+<hr>
+<p><strong>Question:</strong> Is it valid to have multiple <code>&lt;h1&gt;</code> tags?</p>
+<p><strong>Short Interview Answer:</strong> Yes in HTML5 outline theory, but in practice many teams prefer one main <code>&lt;h1&gt;</code> per page for clarity/SEO.</p>
+<p><strong>Explanation:</strong> Browsers and SEO tools vary. A single clear page-level <code>&lt;h1&gt;</code> is safest.</p>
+<p><strong>Example Code:</strong></p>
+<pre><code class="language-html">&lt;h1&gt;Jobs&lt;/h1&gt;
+&lt;section&gt;
+  &lt;h2&gt;Frontend&lt;/h2&gt;
+&lt;/section&gt;</code></pre>
+<p><strong>Best Practices:</strong></p>
+<ul>
+<li>Keep heading hierarchy logical: don’t jump <code>h2</code> to <code>h4</code>.</li>
+</ul>
+<hr>
+<hr>
+<p><strong>Question:</strong> Difference between <code>readonly</code> and <code>disabled</code>?</p>
+<p><strong>Short Interview Answer:</strong> <code>readonly</code> allows focus and form submission of value; <code>disabled</code> prevents focus and the value is not submitted.</p>
+<p><strong>Explanation:</strong> Disabled fields are ignored by form submit.</p>
+<p><strong>Example Code:</strong></p>
+<pre><code class="language-html">&lt;input name=&quot;email&quot; value=&quot;a@b.com&quot; readonly&gt;
+&lt;input name=&quot;token&quot; value=&quot;123&quot; disabled&gt;</code></pre>
+<p><strong>Best Practices:</strong></p>
+<ul>
+<li>Use <code>readonly</code> when value should be submitted but not edited.</li>
+</ul>
+<hr>
+<hr>
+<p><strong>Question:</strong> Why is nesting a <code>&lt;p&gt;</code> inside another <code>&lt;p&gt;</code> wrong?</p>
+<p><strong>Short Interview Answer:</strong> <code>&lt;p&gt;</code> cannot contain another <code>&lt;p&gt;</code>; browser will auto-close tags causing unexpected DOM.</p>
+<p><strong>Explanation:</strong> HTML parser fixes invalid markup automatically, which may break styling/layout.</p>
+<p><strong>Example Code:</strong></p>
+<pre><code class="language-html">&lt;!-- Wrong --&gt;
+&lt;p&gt;Outer &lt;p&gt;Inner&lt;/p&gt;&lt;/p&gt;
+
+&lt;!-- Correct --&gt;
+&lt;p&gt;Outer&lt;/p&gt;
+&lt;p&gt;Inner&lt;/p&gt;</code></pre>
+<p><strong>Best Practices:</strong></p>
+<ul>
+<li>Use validators when unsure.</li>
+</ul>
+<hr>
+<h2>Best Practices (Checklist)</h2>
+<hr>
+<p><strong>Question:</strong> What are professional HTML best practices?</p>
+<p><strong>Short Interview Answer:</strong> Use semantic structure, accessible forms, correct headings, responsive meta, and valid markup.</p>
+<p><strong>Explanation:</strong> Good HTML improves accessibility, SEO, maintainability, and teamwork.</p>
+<p><strong>Example Code:</strong></p>
+<pre><code class="language-html">&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+  &lt;title&gt;Page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;header&gt;...&lt;/header&gt;
+  &lt;main&gt;...&lt;/main&gt;
+  &lt;footer&gt;...&lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p><strong>Best Practices:</strong></p>
+<ul>
+<li>Add <code>lang</code> on <code>&lt;html&gt;</code>.</li>
+<li>One <code>&lt;main&gt;</code> per page.</li>
+<li>Labels for inputs, alt for images.</li>
+<li>Avoid inline styles; keep HTML clean.</li>
+</ul>
+<hr>
+<h2>Rapid Revision Section (Quick Answers)</h2>
+<ul>
+<li><strong>DOCTYPE:</strong> Enables standards mode (HTML5).  </li>
+<li><strong>Head vs Body:</strong> Metadata vs visible content.  </li>
+<li><strong>Tag vs Element:</strong> Tag is syntax, element is full structure.  </li>
+<li><strong>Block vs Inline:</strong> New line/full width vs flows in text.  </li>
+<li><strong>Void elements:</strong> <code>img</code>, <code>input</code>, <code>br</code>, <code>meta</code>, <code>link</code>.  </li>
+<li><strong>id vs class:</strong> Unique vs reusable.  </li>
+<li><strong>Semantic HTML:</strong> Meaningful tags improve a11y/SEO.  </li>
+<li><strong>Forms:</strong> Always use <code>&lt;label&gt;</code>, set button types.  </li>
+<li><strong>GET vs POST:</strong> URL query vs request body.  </li>
+<li><strong>alt:</strong> Required for meaningful images; <code>alt=&quot;&quot;</code> for decorative.  </li>
+<li><strong>Viewport meta:</strong> Required for responsive behavior.  </li>
+<li><strong>Script defer:</strong> Loads without blocking parse; executes after DOM parsed.  </li>
+<li><strong>readonly vs disabled:</strong> readonly submits; disabled doesn’t.</li>
+</ul>
+
+    <div class="footer">
+      Generated from markdown for sharing (PDF-friendly).
+    </div>
+  </div>
+</body>
+</html>

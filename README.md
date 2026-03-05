@@ -3,8 +3,11 @@
 A concise, interview-focused set of notes for freshers/junior frontend developers.
 
 ## Contents
-- **html-interview-prep-guide.md** — full handbook (Q&A + code + best practices)
-- **html-revision-short.md** — short notes (quick revision)
+- `notes/`
+  - **html-interview-prep-guide.md** — full handbook (Q&A + code + best practices)
+  - **html-revision-short.md** — short notes (quick revision)
+- `pdf/` — printable/shareable PDFs
+- `html/` — rendered HTML exports
 
 ## How to use
 - Read the handbook once.
